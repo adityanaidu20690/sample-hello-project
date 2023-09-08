@@ -52,6 +52,7 @@ pipeline {
 docker tag calc adityanaidu20690/calc:latest
 '''
 	}
+    }
     stage ('Image scanning'){
         steps{
             sh '''trivy image adityanaidu20690/calc:latest'''
