@@ -54,5 +54,11 @@ docker push adityanaidu20690/calc:latest'''
 	}
 
 	}
+    stage('Deploy'){
+        steps{
+            sh 'docker run -d -it --name addycalc -p 8085:8085 adityanaidu20690/calc:latest'
+        }
     }
+    
+        }
 }
