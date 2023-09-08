@@ -50,9 +50,19 @@ pipeline {
           steps{
 	sh '''docker build -t calc .
 docker tag calc adityanaidu20690/calc:latest
+'''
+	}
+    stage ('Image scanning'){
+        steps{
+            sh '''trivy image adityanaidu20690/calc:latest'''
+        }
+    }
+	stage('Docker Hub'){
+          steps{
+	sh '''docker build -t calc .
+docker tag calc adityanaidu20690/calc:latest
 docker push adityanaidu20690/calc:latest'''
 	}
-
 	}
     stage('Deploy'){
         steps{
