@@ -22,5 +22,29 @@ pipeline {
                 echo "---------build completed-------------"
             }
         }
+	 stage('SonarQube analysis') {
+            environment {
+
+    scannerHome = tool 'sonartest'
+}
+            steps {
+                withSonarQubeEnv('sonartest') { // If you have configured more than one global server connection, you can specify its name
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+            }
+        }
+        stage("Quality Gate"){
+            steps{
+                    script{
+                        timeout(time: 1, unit: 'HOURS') {
+              def qg = waitForQualityGate()
+              if (qg.status != 'OK') {
+                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+              }
+          }
+                    }
+            }
+
+        }
     }
 }
