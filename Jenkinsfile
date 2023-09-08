@@ -46,5 +46,13 @@ pipeline {
             }
 
         }
+	stage('Docker Build'){
+          steps{
+	sh '''docker build -t calc .
+docker tag calc adityanaidu20690/calc:latest
+docker push adityanaidu20690/calc:latest'''
+	}
+
+	}
     }
 }
