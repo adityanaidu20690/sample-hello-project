@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn --batch-mode --file ./microservice/pom.xml dependency:purge-local-repository clean package deploy
+      run: mvn --batch-mode --file ./pom.xml dependency:purge-local-repository clean package deploy
       env:
         user_name: ${{ secrets.USER_NAME }}
         user_token: ${{ secrets.USER_TOKEN }}
