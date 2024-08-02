@@ -19,11 +19,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!-- 			<plugin>
+			<plugin>
         			<groupId>org.apache.maven.plugins</groupId>
         			<artifactId>maven-jar-plugin</artifactId>
         			<version>3.2.3</version>
-            </plugin> -->
+            </plugin>
         </plugins>
 	</build>
 
@@ -45,28 +45,4 @@
 		</dependency> -->
 
 	</dependencies>
-<repositories>
-    <repository>
-      <id>SamplePackages</id>
-      <url>https://maven.pkg.github.com/adityanaidu20690/packages</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-  <distributionManagement>
-    <repository>
-      <id>SamplePackages</id>
-      <url>https://maven.pkg.github.com/adityanaidu20690/sample-hello-project</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </distributionManagement>
 </project>
