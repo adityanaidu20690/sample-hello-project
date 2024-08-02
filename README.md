@@ -1,25 +1,11 @@
-# calculator
-> Calculator in Java Spring with Spring Boot and Thymeleaf 
+# Simplest-Spring-Boot-Hello-World
+Simplest Spring Boot Hello World Example 
 
-## General info
-This simple application allow to execute basic mathematical operations. It was created to practise Thymeleaf and Spring Boot.
 
-## Technologies
-* Maven
-* Spring Boot 1.5.9
-* Thymeleaf 3.0.2
+# Steps
 
-## Setup
-1. Clone github repository <br />
-2. Download maven dependencies <br />
-3. Hit run button <br />
+> git clone https://github.com/goxr3plus/Simplest-Spring-Boot-Hello-World.git
 
-## Features
-* Addition
-* Subtraction
-* Multiplication
-* Division
-* Square
-* Element 
-* Number of Fibonacci
+> Run from your favourite IDE ( Eclipse , IntelliJ , Netbeans )
 
+ENJOY THE POWER OF A HELLO WORLD ! Welcome to Spring Boot :)
