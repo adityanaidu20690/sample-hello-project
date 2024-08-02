@@ -38,7 +38,7 @@
 
 
 
-name: common-health build
+name: maven build
 
 on:
   push:
