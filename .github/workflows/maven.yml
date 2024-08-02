@@ -29,6 +29,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-                - name: Download a Build Artifact
-  uses: actions/download-artifact@v4.1.8
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v4.1.8
+      with:
+        name: example.smallest-0.0.1-SNAPSHOT
   
