@@ -22,8 +22,8 @@ runs:
         java-version: '17'
         distribution: 'temurin'
         server-id: 'SamplePackages'
-        server-username: user_name
-        server-password: user_token
+        server-username: ${{ secrets.USER_NAME }}
+        server-password: ${{ secrets.USER_TOKEN }}
 
     - name: Build with Maven for Sample project
       shell: bash
