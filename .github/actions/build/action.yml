@@ -21,7 +21,7 @@ runs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        server-id: 'SamplePackages'
+        server-id: 'github'
         server-username: ${{ inputs.user_name }}
         server-password: ${{ inputs.user_token }}
 
