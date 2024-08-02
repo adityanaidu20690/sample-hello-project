@@ -28,7 +28,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean package -DskipTests
+      run: mvn --batch-mode --file ./microservice/pom.xml dependency:purge-local-repository clean package deploy
+      env:
+        user_name: ${{ secrets.USER_NAME }}
+        user_token: ${{ secrets.USER_TOKEN }}
+        
     - name: Upload JAR artifact
       uses: actions/upload-artifact@v3
       with:
