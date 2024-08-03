@@ -22,15 +22,15 @@ runs:
         java-version: '17'
         distribution: 'temurin'
         server-id: 'github'
-        server-username: "adityanaidu20690"
-        server-password: "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"
+        server-username: ${{ github.actor }}
+        server-password: ${{ secrets.GH_PACKAGES_TOKEN }}
 
     - name: Build with Maven for Sample project
       shell: bash
       run: mvn --file ./microservice/pom.xml dependency:purge-local-repository clean package deploy
       env:
-        user_name: "adityanaidu20690"
-        user_token: "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"
+        user_name: ${{ github.actor }}
+        user_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
     - name: Publish Artifact
       uses: actions/upload-artifact@v2
