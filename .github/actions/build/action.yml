@@ -13,6 +13,9 @@ inputs:
   location:
     description: location to deploy
     required: false
+  GH_PACKAGES_TOKEN:
+    description: GitHub Packages Token
+    required: true
 runs:
   using: composite
   steps:
@@ -23,14 +26,14 @@ runs:
         distribution: 'temurin'
         server-id: 'github'
         server-username: ${{ github.actor }}
-        server-password: ${{ secrets.GH_PACKAGES_TOKEN }}
+        server-password: ${{ inputs.GH_PACKAGES_TOKEN }}
 
     - name: Build with Maven for Sample project
       shell: bash
       run: mvn --file ./microservice/pom.xml dependency:purge-local-repository clean package deploy
       env:
         user_name: ${{ github.actor }}
-        user_token: ${{ secrets.GH_PACKAGES_TOKEN }}
+        GH_PACKAGES_TOKEN: ${{ inputs.GH_PACKAGES_TOKEN }}
 
     - name: Publish Artifact
       uses: actions/upload-artifact@v2

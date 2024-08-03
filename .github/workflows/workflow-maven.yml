@@ -65,7 +65,7 @@ jobs:
       - name: run-build
         uses: ./microservice/.github/actions/build
         with:
-          user_name: ${{ secrets.USER_NAME }}
-          user_token: ${{ secrets.USER_TOKEN }}
+          user_name: ${{ github.actor }}
+          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
           service: "sample-project"
           PROJECT_SUB_DIR: ""
