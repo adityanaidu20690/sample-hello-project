@@ -27,7 +27,7 @@ runs:
 
     - name: Build with Maven for Sample project
       shell: bash
-      run: mvn --batch-mode --file ./microservice/pom.xml dependency:purge-local-repository clean package deploy
+      run: mvn --file ./microservice/pom.xml dependency:purge-local-repository deploy
       env:
         user_name: ${{ inputs.user_name }}
         user_token: ${{ inputs.user_token }}
