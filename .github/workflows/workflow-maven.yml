@@ -36,9 +36,7 @@
 #         name: application
 #         path: target/*.jar
 
-
-
-name: maven build
+name: Sample Project
 
 on:
   push:
@@ -78,56 +76,30 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
+    - name: Upload JAR artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: app
+        path: target/*.jar        
 
-
-
-
-
-
-
-
-
-        name: Build and Upload JAR
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-
-      - name: Build JAR
-        run: ./gradlew build # or use ./mvnw package for Maven
-
-      - name: Upload JAR to Azure Blob Storage
-        uses: azure/cli-action@v1
-        with:
-          azcliversion: '2.44.2' # Specify the Azure CLI version
-        env:
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-
-        run: |
+    - name: Upload JAR to Azure Blob Storage
+      uses: azure/cli@v1
+      env:
+        AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_STORAGE_ACCOUNT_NAME: "addyxlr8"
+        AZURE_STORAGE_CONTAINER_NAME: "gochi"
+      with:
+        inlineScript: |
           # Login to Azure
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
           
           # Upload JAR file
           az storage blob upload \
-            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
-            --container-name ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }} \
-            --name my-app.jar \
-            --file path/to/your/jar-file.jar
+            --account-name ${{ env.AZURE_STORAGE_ACCOUNT_NAME }} \
+            --container-name ${{ env.AZURE_STORAGE_CONTAINER_NAME }} \
+            --name *.jar \
+            --file target/*.jar
 
