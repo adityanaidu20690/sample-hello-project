@@ -36,6 +36,10 @@
 #         name: application
 #         path: target/*.jar
 
+  #  # Login to Azure
+  #  az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+       
+
 name: Sample Project
 
 on:
@@ -80,21 +84,24 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: app
-        path: target/*.jar        
+        path: target/*.jar       
+        
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Upload JAR to Azure Blob Storage
       uses: azure/cli@v1
       env:
-        AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        # AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        # AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        # AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        # AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         AZURE_STORAGE_ACCOUNT_NAME: "addyxlr8"
         AZURE_STORAGE_CONTAINER_NAME: "gochi"
       with:
         inlineScript: |
-          # Login to Azure
-          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
           
           # Upload JAR file
           az storage blob upload \
@@ -103,3 +110,7 @@ jobs:
             --name *.jar \
             --file target/*.jar
 
+
+
+
+            
