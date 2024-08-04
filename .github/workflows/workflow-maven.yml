@@ -14,7 +14,7 @@ env:
 
 jobs:
   build-sample-project:
-    name: deploy-sample-project
+    name: build-sample-project
     runs-on: ubuntu-latest
     permissions:
       contents: read
