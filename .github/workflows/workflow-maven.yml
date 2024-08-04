@@ -94,7 +94,7 @@ jobs:
             --account-name ${{ env.AZURE_STORAGE_ACCOUNT_NAME }} \
             --container-name ${{ env.AZURE_STORAGE_CONTAINER_NAME }} \
             --name sample-project-0.0.1-SNAPSHOT.jar \
-            --file target/sample-project-0.0.1-SNAPSHOT.jar
+            --file sample-project-0.0.1-SNAPSHOT.jar
             
     # - name: Download artifact from build job
     #   uses: actions/download-artifact@v3
