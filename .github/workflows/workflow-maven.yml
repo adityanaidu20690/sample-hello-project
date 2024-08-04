@@ -13,7 +13,7 @@ env:
   AZURE_WEBAPP_NAME: "sampleproject"
 
 jobs:
-  deploy-sample-project:
+  build-sample-project:
     name: deploy-sample-project
     runs-on: ubuntu-latest
     permissions:
@@ -60,12 +60,12 @@ jobs:
         name: sample-project-0.0.1-SNAPSHOT
         path: target/*.jar       
  
-  deploy:
+  deploy-sample-project:
     permissions:
       contents: none
       packages: write
     runs-on: ubuntu-latest
-    needs: deploy-sample-project
+    needs: build-sample-project
     environment:
       name: 'test'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
