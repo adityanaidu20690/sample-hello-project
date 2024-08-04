@@ -68,7 +68,7 @@ jobs:
       uses: azure/cli@v1
       env:
         AZURE_STORAGE_ACCOUNT_NAME: "addyxlr8"
-        AZURE_STORAGE_CONTAINER_NAME: "gochi"
+        AZURE_STORAGE_CONTAINER_NAME: "sampleproject"
       with:
         inlineScript: |          
           # Upload JAR file
