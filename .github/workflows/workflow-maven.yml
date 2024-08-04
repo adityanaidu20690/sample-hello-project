@@ -100,6 +100,7 @@ jobs:
         inlineScript: |          
           # Upload JAR file
           az storage blob upload \
+            --overwrite \
             --account-name ${{ env.AZURE_STORAGE_ACCOUNT_NAME }} \
             --container-name ${{ env.AZURE_STORAGE_CONTAINER_NAME }} \
             --name sample-project-0.0.1-SNAPSHOT.jar \
