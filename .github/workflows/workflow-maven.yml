@@ -112,8 +112,8 @@ jobs:
           az storage blob upload \
             --account-name ${{ env.AZURE_STORAGE_ACCOUNT_NAME }} \
             --container-name ${{ env.AZURE_STORAGE_CONTAINER_NAME }} \
-            --name *.jar \
-            --file target/*.jar
+            --name sample-project-0.0.1-SNAPSHOT.jar \
+            --file target/sample-project-0.0.1-SNAPSHOT.jar
 
 
 
