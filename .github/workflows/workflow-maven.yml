@@ -81,7 +81,7 @@ jobs:
       with:
         name: sample-project-0.0.1-SNAPSHOT
 
-    - name: Upload JAR to Azure Blob Storage
+    - name: copy JAR to Azure Blob Storage
       uses: azure/cli@v1
       env:
         AZURE_STORAGE_ACCOUNT_NAME: "addyxlr8"
