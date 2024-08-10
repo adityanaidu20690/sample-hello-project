@@ -53,7 +53,7 @@ stages:
     - task: NuGetCommand@2
       inputs:
         command: 'push'
-        packagesToPush: '$(Build.ArtifactStagingDirectory)/*.jar'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/target/*.jar'
         publishVstsFeed: 'gochi'  
 
 - stage: Deploy
