@@ -45,6 +45,12 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
 
+    - task: NuGetCommand@2
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/*.jar'
+        publishVstsFeed: 'gochi'  
+
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
