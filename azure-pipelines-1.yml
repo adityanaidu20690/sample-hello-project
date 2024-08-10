@@ -45,6 +45,11 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
 
+    - script: |
+         echo "Listing contents of $(Build.ArtifactStagingDirectory):"
+         ls $(Build.ArtifactStagingDirectory)
+      displayName: 'List contents of artifact staging directory'
+
     - task: NuGetCommand@2
       inputs:
         command: 'push'
