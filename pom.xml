@@ -58,8 +58,7 @@
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-    </repository
-	    
+    </repository>
 <repository>
   <id>adevaws</id>
   <url>https://pkgs.dev.azure.com/adevaws/_packaging/adevaws/maven/v1</url>
@@ -72,17 +71,16 @@
 </repository>
   </repositories>
   <distributionManagement>
-    <repository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/adityanaidu20690/sample-hello-project</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-
+  <repository>
+    <id>github</id>
+    <url>https://maven.pkg.github.com/adityanaidu20690/sample-hello-project</url>
+    <releases>
+      <enabled>true</enabled>
+   </releases>
+   <snapshots>
+     <enabled>true</enabled>
+   </snapshots>
+</repository>
 <repository>
   <id>adevaws</id>
   <url>https://pkgs.dev.azure.com/adevaws/_packaging/adevaws/maven/v1</url>
@@ -93,6 +91,5 @@
     <enabled>true</enabled>
   </snapshots>
 </repository>
-	  
   </distributionManagement>
 </project>
