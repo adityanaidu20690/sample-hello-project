@@ -54,14 +54,14 @@ stages:
       inputs:
         command: 'restore'
         feedsToUse: 'select'
-        vstsFeed: 'gochi'
+        vstsFeed: 'adevaws'
         includeNuGetOrg: true
 
     - task: NuGetCommand@2
       inputs:
         command: 'push'
         packagesToPush: '$(Build.ArtifactStagingDirectory)/target/*.jar'
-        publishVstsFeed: 'gochi'  
+        publishVstsFeed: 'adevaws'  
 
 - stage: Deploy
   displayName: Deploy stage
